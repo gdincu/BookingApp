@@ -1,0 +1,26 @@
+﻿[
+  {
+    "Data": "2018-05-06",
+    "Client": "Client1",
+    "Frizer": "FrizerA",
+    "Comentarii": "ABCS"
+  },
+  {
+    "Data": "2018-06-06",
+    "Client": "Client2",
+    "Frizer": "FrizerA",
+    "Comentarii": "ASDAS"
+  },
+  {
+    "Data": "2018-07-06",
+    "Client": "Client3",
+    "Frizer": "FrizerB",
+    "Comentarii": "AGDSSD"
+  },
+  {
+    "Data": "2018-07-07",
+    "Client": "Client4",
+    "Frizer": "FrizerB",
+    "Comentarii": "TREW"
+  }
+]

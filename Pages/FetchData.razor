@@ -1,0 +1,57 @@
+﻿@page "/fetchdata"
+@inject HttpClient Http
+
+<PageTitle>Bookings</PageTitle>
+
+<h1>Bookings</h1>
+
+@if (bookings == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Client</th>
+                <th>Frizer</th>
+                <th>Comentarii</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var booking in bookings)
+            {
+                <tr>
+                    <td>@booking.Data</td>
+                    <td>@booking.Client</td>
+                    <td>@booking.Frizer</td>
+                    <td>@booking.Comentarii</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private BookingApp[]? bookings;
+
+    protected override async Task OnInitializedAsync()
+    {
+        bookings = await Http.GetFromJsonAsync<BookingApp[]>("sample-data/bookings.json");
+        await Http.PostAsJsonAsync("sample-data/bookings.json", "test");
+    }
+
+    public class BookingApp
+    {
+        public DateTime Data { get; set; }
+
+        public string Client { get; set; }
+
+        public string Frizer { get; set; }
+
+        public string? Comentarii { get; set; }
+
+    }
+}

@@ -1,0 +1,74 @@
+﻿@page "/new"
+
+<PageTitle>Counter</PageTitle>
+
+<h1>New booking</h1>
+
+<EditForm Model="@exampleModel" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group row">
+        <label for="CustomerName" class="col-sm-2 col-form-label">
+            Client: 
+        </label>
+        <div class="col-sm-10">
+            <InputText id="CustomerName" class="form-control"
+                       @bind-Value="exampleModel.Client" />
+        </div>
+    </div>
+    
+    <br />
+    
+    <div class="form-group row">
+        <label for="FrizerName" class="col-sm-2 col-form-label">
+            Frizer: 
+        </label>
+        <div class="col-sm-10">
+            <InputSelect id="FrizerName" class="form-control"
+                       @bind-Value="exampleModel.Frizer">
+                       <option value="FrizerA">FrizerA</option>
+                       <option value="FrizerB">FrizerB</option>
+                       <option value="FrizerC">FrizerC</option>
+            </InputSelect>
+        </div>
+    </div>
+
+    <br />
+    
+    <div class="form-group row">
+        <label for="DataRezervare" class="col-sm-2 col-form-label">
+            Data: 
+        </label>
+        <div class="col-sm-10">
+            <InputDate id="DataRezervare" class="form-control"
+                       @bind-Value="exampleModel.Data" />
+        </div>
+    </div>
+
+    <br />
+    
+    <div class="form-group row">
+        <label for="Comentarii" class="col-sm-2 col-form-label">
+            Comentarii: 
+        </label>
+        <div class="col-sm-10">
+            <InputText id="Comentarii" class="form-control"
+                       @bind-Value="exampleModel.Comentarii" />
+        </div>
+    </div>
+
+    <br />
+    <button class="btn-info" type="submit">Submit</button>
+</EditForm>
+
+@code {
+    private ExampleModel exampleModel = new();
+
+    private void HandleValidSubmit()
+    {   
+        string path = "E:\\2-0_ACE_UCV\\Sem2_ArhitecturiSoftware\\BookingApp\\wwwroot\\sample-data\\bookings.json";
+        string stringToAppend = exampleModel.ToString();
+        File.AppendAllText(path, stringToAppend);
+    }
+}
